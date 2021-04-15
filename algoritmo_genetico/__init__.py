@@ -1,0 +1,1 @@
+from .algoritmo_genetico import AlgoritmoGenetico
