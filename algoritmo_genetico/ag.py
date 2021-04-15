@@ -68,13 +68,13 @@ class AlgoritmoGenetico:
         return self.populacao
 
     def selecao(self, geracao):
-        selecionados = []
-        while len(selecionados) < int(self.tamanho_populacao/2):
+        genitores = {}
+        while len(genitores) < int(self.tamanho_populacao/2):
             numero_aleatorio = float(format(random() * self.populacoes[geracao].get('ultimo_acumulado'), '.5f'))
-            for key, populacao in self.populacoes.get(geracao).items():
+            for chave, populacao in self.populacoes.get(geracao).items():
                 if numero_aleatorio <= populacao.get('acumulado'):
-                    if key not in selecionados:
-                        selecionados.append(key)
+                    if not genitores.get(chave):
+                        genitores[chave] = populacao
                     break
         pass
     def crossover(self):
